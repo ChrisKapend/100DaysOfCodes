@@ -1,4 +1,2 @@
-# 100DaysOfCodes
-
-##This content my journey through the 100DaysOfCodes . . .
+# 100DaysOfCodes my journey
 My focus here will be on improving my algorithm/ datastructure understanding and java programming skills.
