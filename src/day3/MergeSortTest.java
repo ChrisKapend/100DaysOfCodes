@@ -25,10 +25,10 @@ public class MergeSortTest{
 //        T subarray2 [] = a1e < a1s ? Arrays.copyOfRange(array, a1e + 1, a2e) : Arrays.copyOfRange(array, a1e + 1, a2e + 1);
         T subarray1 [] = Arrays.copyOfRange(array, a1s, a1e + 1);
         T subarray2 [] = Arrays.copyOfRange(array, a1e + 1 , a2e + 1);
-        int i = 0, j = 0, k = a1s, l = a1e + a2e; //i, j, k are loop runner for the first second and merged array
+        int i = 0, j = 0, k = a1s; //i, j, k are loop runner for the first second and merged array
         while(i < subarray1.length && j < subarray2.length){
             if( subarray1[i].compareTo(subarray2[j]) <= 0 ){//copy the lowest value between the two sub arrays in the lowest k index
-                array[k++] = subarray1[i];
+                array[k++] = subarray1[i]; //same as incrementing k below the else closing braket
                 i++;
             }
             else{
