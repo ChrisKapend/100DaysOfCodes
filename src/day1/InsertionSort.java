@@ -1,25 +1,36 @@
 package day1;
 
-import java.awt.event.KeyEvent;
-
 public class InsertionSort {
     public static void main(String [] args){
         int [] unsorted = {5, 2, 4, 6, 1, 3, 9}; //input : an unsorted array
         readArray(unsorted); //sorting the array
-        readArray(InsertionSort(unsorted)); //printing the sorted array
+        readArray(InsertionSortIncreasing(unsorted, true)); //sort the array in increasing order
+        readArray(InsertionSortIncreasing(unsorted, false)); //sort the array in decreasing order
     }
-    //Insertion sort
-    static int [] InsertionSort(int [] keys){
-        for(int i = 1; i<keys.length; i++){ //looping through each element of the array
-            int current = keys[i]; //temp value needed to old the current element that need to be inserted at the right place
-            int j = i - 1; //the insertion start at the second element of the array we need at least two element for comparison
-            while ( j >=0 && current < keys[j] ){ //given that the left part of the array is always sorted we try to insert the ieth element at the right position. Check if that element is at the right position while we haven't reach the begining of the array
-                keys[j + 1] = keys[j]; //if the current element is lower than the element at the current position move the current at the current position to the next one to make place
-                j--; //reduce the value of the current position to reach the begining of the array
+
+    //Insertion sort decreasing
+    static int [] InsertionSortIncreasing(int A [], boolean increasing){
+        //first loop traverse the whole array from start to the end
+        for (int i = 1; i < A.length; i++) { //always start at 1 because the single element subarray is always sorted
+            int current = A[i]; //the current element in the array, the sub array A[0..i]is always sorted
+            //j is one element less than i to allow comparison to be made between the two elements
+            int j = i - 1; //second loop runner traverse the subarray A[0..i] to find a best position for the A[i] element
+            if(increasing){ //when true the array is sorted in increasing order
+                while(j >= 0 && current < A[j]){//increasing order sort
+                    A[j+1] = A[j];
+                    j--;
+                }
+                A[j+1]=current;
             }
-            keys[j + 1] = current; //if we reach this position it means the current element is at the right position where it
+            else{
+                while(j >= 0 && current > A[j]){//decreasing order
+                    A[j+1] = A[j];
+                    j--;
+                }
+                A[j+1]=current;
+            }
         }
-        return keys;
+        return A;
     }
     static void readArray(int [] array){
         for (int i = 0; i < array.length; i++) {
